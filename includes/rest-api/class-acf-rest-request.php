@@ -199,7 +199,11 @@ class ACF_Rest_Request {
 			$this->object_type = $this->object_sub_type = 'user';
 		} elseif ( $base === 'comments' ) {
 			$this->object_type = $this->object_sub_type = 'comment';
-		} elseif ( $post_type = $this->get_post_type_by_rest_base( $base ) ) {
+			
+		// ACF: Add support for media object type (attachment).
+		} elseif ( $base === 'media') {
+                  	$this->object_type = $this->object_sub_type = 'attachment';
+                } elseif ( $post_type = $this->get_post_type_by_rest_base( $base ) ) {
 			$this->object_type     = 'post';
 			$this->object_sub_type = $post_type->name;
 
