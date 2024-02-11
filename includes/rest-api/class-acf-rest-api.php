@@ -494,6 +494,13 @@ class ACF_Rest_Api {
 				$post_type = get_post_type( $comment->comment_post_ID );
 				$args      = array( 'comment' => $post_type );
 				break;
+			// ACF: Add support for media object type (attachment). 
+		        case 'attachment':
+		                $args = array(
+		                    'attachment'    => $object_id,
+		                    'attachment_id' => $object_id
+		                );
+		                break;
 			case 'post':
 			default:
 				$args            = array( 'post_id' => $object_id );
